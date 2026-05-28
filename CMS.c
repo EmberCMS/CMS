@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <strings.h>
 
-int endsWithEcms(const char *str)
+int endsWithEcms(const char *str);
+int parseFile(char* filetoread, char* directory);
 
 int main (int argc, char** argv) {
   if(argc == 3){
     char* directory = argv[2];
     char* filetoread = argv[1];
     if (endsWithEcms(filetoread) == 1){
-      //goforth
+      parseFile(filetoread, directory);
     } else {
       printf("the input file to read isn't valid, write a .ecms file\n");
       return 1;
@@ -27,9 +28,14 @@ int main (int argc, char** argv) {
 
 
 int endsWithEcms(const char *str) {
-    int len = strlen(str);
-    if (len < 4) {
-        return 0;
-    }
-    return strcmp(str + len - 4, "ecms") == 0;
+  int len = strlen(str);
+  if (len < 4) {
+    return 0;
+  }
+  return strcmp(str + len - 4, "ecms") == 0;
+}
+
+int parseFile(char* filetoread, char* directory){
+  
+
 }
